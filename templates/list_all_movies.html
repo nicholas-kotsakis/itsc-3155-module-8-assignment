@@ -19,9 +19,15 @@
         <tr>
             <td>{{movie.title}}</td>
             <td>{{movie.director}}</td>
-            <td>{{movie.rating}} </td>
+            <td>
+                {%for i in range(movie.rating)%}
+                    <i class="fas fa-star" style="color: gold;"></i>
+                {%endfor%}
+            </td>
         </tr>
         {%endfor%}
     </tbody>
 </table>
+
+
 {% endblock %}
