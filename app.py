@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.get('/')
 def index():
     #Test code to create a movie
-    movie_repository_singleton.create_movie('Test Movie Title','Test Director',5)
+    #movie_repository_singleton.create_movie('Test Movie Title','Test Director',5)
     return render_template('index.html')
 
 
