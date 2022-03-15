@@ -19,3 +19,4 @@ def test_create_movie():
     assert saved_movies[i].title == data['title']
     assert saved_movies[i].director == data['director']
     assert saved_movies[i].rating == data['rating']
+    movie_repository_singleton.get_all_movies().clear()
