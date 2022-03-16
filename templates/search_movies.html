@@ -6,4 +6,38 @@
 <h1 class="mb-5">Search Movie Ratings</h1>
 <p class="mb-3">Search for a movie rating below</p>
 <!-- TODO: Feature 3 -->
+<table class="table">
+    <form action="/movies/search" method="GET">
+        <div class="form-group">
+            <label for="movie_title">search for a movie by Title</label>
+            <input type="text" class="form-control" name="search_title_1" id="search_title_1">
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+
+        <tr>
+            <th>Movie Title</th>
+            <th>Director</th>
+            <th>Rating</th>
+        </tr>
+        
+        {% for movie in data %}
+            {% if search_title == movie.title%}
+                <tbody>
+                    <td>{{movie.title}}</td>
+                    <td>{{movie.director}}</td>
+                    <td>
+                        {%for i in range(movie.rating)%}
+                            <i class="fas fa-star" style="color: gold;"></i>
+                        {%endfor%}
+                </tbody>
+            {% endif %}
+        {% endfor%}
+    </form>
+    
+
+
+</table>
 {% endblock %}
