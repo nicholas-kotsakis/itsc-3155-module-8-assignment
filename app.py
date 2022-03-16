@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template, request
 from src.repositories.movie_repository import movie_repository_singleton
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ def index():
 @app.get('/movies')
 def list_all_movies():
     # TODO: Feature 1
-    return render_template('list_all_movies.html', list_movies_active=True)
+    return render_template('list_all_movies.html', list_movies_active=True,)
 
 
 @app.get('/movies/new')
@@ -24,10 +24,18 @@ def create_movies_form():
 def create_movie():
     # TODO: Feature 2
     # After creating the movie in the database, we redirect to the list all movies page
+    
+    
     return redirect('/movies')
+    
 
 
 @app.get('/movies/search')
 def search_movies():
     # TODO: Feature 3
-    return render_template('search_movies.html', search_active=True)
+    movies = movie_repository_singleton.get_all_movies()
+    py_search_title = request.args.get('search_title_1', 'none')
+
+
+
+    return render_template('search_movies.html', search_active=True, search_title=py_search_title , data=movies )
